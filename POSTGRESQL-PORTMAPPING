@@ -9,7 +9,7 @@ sudo apt install -y postgresql-client-16
 
 ## Execute ssh from local 
 
-ssh -i key.pem -L 5432:dev.czieuoi26ubb.us-east-1.rds.amazonaws.com:5432 ubuntu@44.192.13.119 -N
+ssh -i key.pem -L 5432:dev.cj4oikwus36y.us-east-1.rds.amazonaws.com:5432 ubuntu@44.192.13.119 -N
 
 ## Connect to database from local 
 
@@ -27,7 +27,7 @@ pg_dump --host=127.0.0.1 --port=5432 --username=postgres --dbname=testdb --file=
 
 psql -h 127.0.0.1 -p 5432 -U postgres -W -c "CREATE DATABASE newdatabase;"
 
-psql -h 127.0.0.1 -U postgres -d newdatabase -W -f testdb.sql
+psql -h 127.0.0.1 -p 5432 -U postgres -d newdatabase -W -f testdb.sql
 
 ## verify 
 
