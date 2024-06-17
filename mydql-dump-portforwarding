@@ -1,0 +1,31 @@
+sudo apt update && sudo apt install mysql-client
+
+mysql --version
+
+ssh -i key.pem ec2-user@54.82.29.32 -L 3306:dev.chsmes0ka0al.us-east-1.rds.amazonaws.com:3306 -N
+
+mysql -h 127.0.0.1 -P 3306 -u admin -p
+
+mysqldump -h  127.0.0.1 -u admin -p sampledb > sampledb_dump.sql
+
+mysql -h 127.0.0.1 -P 3306 -u admin -p
+
+CREATE DATABASE YUKESH;
+
+SHOW DATABASES;
+
+SHOW TABLES;
+
+QUIT
+
+SOURCE /home/yukesh/Downloads/sampledb_dump.sql
+
+mysql -h 127.0.0.1 -u admin -p YUKESH < sampledb_dump.sql
+
+
+
+
+
+
+
+
