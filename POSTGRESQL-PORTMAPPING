@@ -1,0 +1,38 @@
+## Install Postgreesql Client on Local machine
+
+sudo apt update
+sudo apt install -y wget ca-certificates gnupg lsb-release
+wget -qO - https://www.postgresql.org/media/keys/ACCC4CF8.asc | sudo gpg --dearmor -o /usr/share/keyrings/pgdg-archive-keyring.gpg
+echo "deb [signed-by=/usr/share/keyrings/pgdg-archive-keyring.gpg] http://apt.postgresql.org/pub/repos/apt/ $(lsb_release -cs)-pgdg main" | sudo tee /etc/apt/sources.list.d/pgdg.list
+sudo apt update
+sudo apt install -y postgresql-client-16
+
+## Execute ssh from local 
+
+ssh -i key.pem -L 5432:dev.czieuoi26ubb.us-east-1.rds.amazonaws.com:5432 ubuntu@44.192.13.119 -N
+
+## Connect to database from local 
+
+psql -h 127.0.0.1 -U postgres -W
+
+## Quit 
+
+\q
+
+## execute the command for databump
+
+pg_dump --host=127.0.0.1 --port=5432 --username=postgres --dbname=testdb --file=testdb.sql
+
+## export the datadump to new database
+
+psql -h 127.0.0.1 -p 5432 -U postgres -W -c "CREATE DATABASE newdatabase;"
+
+psql -h 127.0.0.1 -U postgres -d newdatabase -W -f testdb.sql
+
+## verify 
+
+
+
+
+
+
