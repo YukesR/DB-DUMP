@@ -40,6 +40,10 @@ SELECT * FROM sample_table;
 
 exit
 
+*********************************************************************************************************************************
+ENSURE CLIENT AND DATABASE USING SAME VERSION ORELSE UPDATE THE CLIENT TO SAME VERSION OF DATABASE
+*********************************************************************************************************************************
+
 # create a Dumbfile 
 mysqldump -h  dev.chsmes0ka0al.us-east-1.rds.amazonaws.com -u admin -p sampledb > sampledb_dump.sql
 
